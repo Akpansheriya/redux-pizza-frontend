@@ -1,0 +1,14 @@
+.increment-decrement-btn {
+    display: flex;
+    justify-content: center;
+  
+}
+
+.inc-dec-btn {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding:5px auto;
+    margin-inline: 5px;
+    margin-bottom: 15px;
+    
+}
