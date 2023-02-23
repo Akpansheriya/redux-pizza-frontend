@@ -1,5 +1,5 @@
 import { ActionTypes } from "../action-types/action-types";
-
+import axios from "axios"
 
 export const setCartItem = (item) => {
   return {
@@ -8,11 +8,21 @@ export const setCartItem = (item) => {
   }
 }
 
-export const setProducts = (products) => {
-  return {
-    type: ActionTypes.SET_PRODUCTS,
-    payload: products,
-  };
+export const setProducts = () => {
+
+  return async(dispatch) => {
+    const response = await axios
+    .get("http://localhost:4000/api/getAllPizza")
+    .catch((err) => {
+      console.log("Err: ", err);
+    });
+    dispatch( {
+      type: ActionTypes.SET_PRODUCTS,
+      payload: response.data,
+    })
+  }
+ 
+ 
 };
 
 export const setQuantity = (quantity) => {

@@ -1,6 +1,24 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import Badge from "@material-ui/core/Badge";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { useSelector } from 'react-redux';
 function Navbar() {
+ 
+   const iconData = useSelector((state) =>  state.cartItems.item.map(data => data.product.length))
+   console.log("iconData",iconData)
+
+
+
+
+const navigate = useNavigate();
+
+const onClickHandler = () =>{
+navigate("/Cart")
+
+}
+
+
   return (
     <div>
         <nav className="navbar navbar-expand-lg bg-light mb-5">
@@ -45,7 +63,11 @@ function Navbar() {
           
         </div>
       </div>
+    
+<Badge color="secondary" badgeContent={iconData}  style={{marginRight:"20px"}}><ShoppingCartIcon onClick={onClickHandler} /></Badge>
+   
     </nav>
+   
     </div>
   )
 }

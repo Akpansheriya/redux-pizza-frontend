@@ -11,17 +11,10 @@ function Screen() {
  const navigate = useNavigate()
   const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();
-  const fetchProducts = async () => {
-    const response = await axios
-      .get("http://localhost:4000/api/getAllPizza")
-      .catch((err) => {
-        console.log("Err: ", err);
-      });
-    dispatch(setProducts(response.data));
-  };
+  
 
   useEffect(() => {
-    fetchProducts();
+    dispatch(setProducts())
   }, []);
 
   console.log("Products :", products);
